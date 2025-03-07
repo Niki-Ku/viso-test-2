@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { Meal } from "./types";
 import MealCard from "./components/MealCard/MealCard";
 import "./App.css";
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getAllRecipes } from "./utils/fetchUtils";
 import Pagination from "./components/Pagination/Pagination";
 import SearchBar from "./components/SearchBar/SearchBar";
+import { getCartFromLocalStorage } from "./utils/utils";
 
 const App = () => {
   const [display, setDisplay] = useState<Meal[]>([])
@@ -13,9 +14,11 @@ const App = () => {
   const [totalPages, setTotalPages] = useState<number>(0)
 	const { data, isError, isLoading } = useQuery({
 		queryFn: () => getAllRecipes(),
-		queryKey: ["data"],
-  });
-  
+    queryKey: ["data"],
+    cacheTime: 1000 * 60 * 60 * 24,
+  } as UseQueryOptions<Meal[], Error>);
+  const [cartData, setCartData] = useState<string[]>([])
+
   const itemsPerPage = 20
   const lastItemIndex = currentPage * itemsPerPage;
   const firsItemIndex = lastItemIndex - itemsPerPage;
@@ -26,6 +29,10 @@ const App = () => {
       setTotalPages(Math.ceil(data?.length / itemsPerPage))
     }
   }, [data, currentPage])
+
+  useEffect(() => {
+    setCartData(getCartFromLocalStorage())
+  }, [])
 
 	if (isLoading) return <div>Loadin...</div>;
 
@@ -43,6 +50,7 @@ const App = () => {
             name={d.strMeal}
             origin={d.strArea}
             category={d.strCategory}
+            items={cartData}
           />
 				))}
 			</div>
