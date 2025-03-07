@@ -7,18 +7,6 @@ import { getAllRecipes } from "./utils/fetchUtils";
 import Pagination from "./components/Pagination/Pagination";
 import SearchBar from "./components/SearchBar/SearchBar";
 
-// TODO:
-// Main page with all recipes
-// add searchbar at the top
-// components with recipes
-// add dropdown for filtering
-// add pagination at the bottom
-
-// connect react querry
-// get data with it
-// get all recieps
-// make filter for 
-
 const App = () => {
   const [display, setDisplay] = useState<Meal[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1);
