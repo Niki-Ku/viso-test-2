@@ -8,7 +8,7 @@ interface IMealCard {
   category: string;
   origin: string;
   id: string;
-  items: string[];
+  items?: string[];
 }
 
 const MealCard: React.FC<IMealCard> = ({ imgSrc, name, category, origin, id, items }) => {
@@ -22,10 +22,12 @@ const MealCard: React.FC<IMealCard> = ({ imgSrc, name, category, origin, id, ite
         <span>{category}</span>
         <span>Origin: {origin}</span>
       </div>
-      <button onClick={() => {
-        items.push(id)
-        setCartToLocalStorage(items)
-      }}>Add to card</button>
+      {items && (
+        <button onClick={() => {
+          items.push(id)
+          setCartToLocalStorage([...new Set(items)])
+        }}>Add to card</button>
+      )}
     </div>
   )
 };

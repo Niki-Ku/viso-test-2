@@ -1,0 +1,26 @@
+.cart-main {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.cart-cart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cart-ingredients {
+  min-width: 200px;
+}
+
+.cart-ingredients li {
+  margin-left: 1.25rem;
+}
+
+.link {
+  margin: 2rem;
+  margin-bottom: 0;
+  display: inline-block;
+}
