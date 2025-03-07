@@ -1,7 +1,14 @@
 .cards-block {
   margin: 16px;
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
+.home {
+  margin: 1rem;
+}
+
+.home-link {
+  font-size: 2rem;
+}

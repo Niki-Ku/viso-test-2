@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { setCartToLocalStorage } from "../../utils/utils";
 import "./MealCard.css"
 
 interface IMealCard {
@@ -7,9 +8,10 @@ interface IMealCard {
   category: string;
   origin: string;
   id: string;
+  items?: string[];
 }
 
-const MealCard: React.FC<IMealCard> = ({ imgSrc, name, category, origin, id }) => {
+const MealCard: React.FC<IMealCard> = ({ imgSrc, name, category, origin, id, items }) => {
   return (
     <div className="meal-card">
       <img src={imgSrc} alt={name} />
@@ -20,6 +22,12 @@ const MealCard: React.FC<IMealCard> = ({ imgSrc, name, category, origin, id }) =
         <span>{category}</span>
         <span>Origin: {origin}</span>
       </div>
+      {items && (
+        <button onClick={() => {
+          items.push(id)
+          setCartToLocalStorage([...new Set(items)])
+        }}>Add to card</button>
+      )}
     </div>
   )
 };

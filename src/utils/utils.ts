@@ -14,3 +14,12 @@ export const extractIngredientsAndMeasures = (
 
 	return { ingredients, measures };
 };
+
+export const setCartToLocalStorage = (value: unknown): void => {
+  localStorage.setItem("cart", JSON.stringify(value));
+};
+
+export const getCartFromLocalStorage = (): []  => {
+  const value = localStorage.getItem("cart");
+  return value ? JSON.parse(value) : [];
+};

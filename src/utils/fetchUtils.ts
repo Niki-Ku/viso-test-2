@@ -10,7 +10,7 @@ const getReciepByLetter = async (letter: string) => {
 	}
 };
 
-// this variat takes less time but returns too many requests error
+// this variat takes less time but returns "too many requests" error
 
 // export const getAllRecipes = async () => {
 //   const letters = 'abcdefghijklmnopqrstuvwxyz'
@@ -43,3 +43,8 @@ export const getReciepById = async (id: string) => {
 		console.log(error);
 	}
 };
+
+export const getAllRecipesById = async (arr: string[]) => {
+	const res = await Promise.all(arr.map(async (id) => await getReciepById(id)));
+	return res.flat()
+}
