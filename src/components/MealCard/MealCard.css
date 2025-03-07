@@ -1,0 +1,24 @@
+.meal-card {
+  width: 280px;
+  height: 240px;
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.meal-card img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.meal-card div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.meal-card h4 {
+  padding: 10px;
+  padding-bottom: 0;
+}

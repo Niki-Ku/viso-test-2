@@ -1,0 +1,8 @@
+.page-count {
+  padding: 2px;
+  border: 1px solid black;
+}
+
+.page-count.active {
+  background-color: bisque;
+}
